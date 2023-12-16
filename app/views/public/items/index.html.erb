@@ -1,0 +1,30 @@
+<div class="base-container mw-xl">
+  <div class="texts-wrapper">
+    <div class="contents-title text-center">
+      <h1>商品一覧</h1>
+      <div class="row justify-content-center">
+    
+
+
+        <% @items.each do |item| %>
+        
+          <div class="card-deck">
+            <div class="col-6 col-md-6 col-lg-8 text-card-container">
+              <div class="card-header p-0">
+                <%= image_tag item.image, size: "200x100", class: "card-img-top" %>
+                
+                  <%= link_to public_item_path(item.id) do %>
+                    <%= item.name %>
+                  <% end %><br>
+                  <%= item.price %>
+              </div>
+            </div>
+          </div>
+          <%= paginate @items %>
+        <% end %>
+        
+        
+      </div>
+    </div>
+  </div>
+</div>

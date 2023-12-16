@@ -2,7 +2,7 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
-  <table
+  <table>
     <tr>
       <th><%= f.label :first_name, "名" %></th>
       <th><%= f.text_field :first_name, autofocus: true, autocomplete: "email" %></th>
