@@ -1,8 +1,46 @@
-<h2>登録情報</h2>
-<%= "#{@customer.first_name} #{@customer.last_name}"%>
-<%= "#{@customer.first_name_kana} #{@customer.last_name_kana}" %>
-<%= @customer.postal_code %>
-<%= @customer.address %>
-<%= @customer.telephone_number %>
-<%= @customer.email %>
-
+<div class="container px-5 px-sm-0">
+  <div class="col-md-8 offset-md-1">
+    <h2>登録情報</h2>
+    <table>
+      <tr>
+        <th>会員ID</th>
+        <th><%= "#{@customer.first_name} #{@customer.last_name}"%></th>
+      </tr>
+      <tr>
+        <th>フリガナ</th>
+        <th><%= "#{@customer.first_name_kana} #{@customer.last_name_kana}" %></th>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <th><%= @customer.postal_code %></th>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <th><%= @customer.address %></th>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <th><%= @customer.telephone_number %></th>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <th><%= @customer.email %></th>
+      </tr>
+      <tr>
+        <th>会員ステータス</th>
+        <th>
+          <% if @customer.is_active == true %>
+            有効
+          <% else %>
+            退会
+          <% end %>
+          </th>
+      </tr>
+      <tr>
+        <th></th>
+        <th><%= link_to "編集する", edit_admin_customer_path(@customer.id) %></th>
+        <th><%= link_to "注文履歴一覧をを見る", admin_order_path(@customer.id) %></th>
+      </tr>
+    </table>
+  </div>
+</div>

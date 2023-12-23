@@ -20,10 +20,10 @@ Rails.application.routes.draw do
     resources :items, only: [:show, :index,]
     resources :customers, only: [:show, :edit, :update, :confirm, :destroy]
     resources :orders, only: [:show, :create, :index, :new, :confirm, :completion]
-    resources :cart_items, only: [:create, :destroy, :index, :update, :destroy_all]
+    resources :cart_items, only: [:create, :destroy, :index, :update]
     get 'homes/about' => 'homes#about', as: :about
     patch 'customers/withdrawal', to: 'customers#withdrawal', as: 'withdrawal_customer'
-    
+    delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
