@@ -1,0 +1,25 @@
+<h2>注文情報入力</h2>
+<p>支払方法</p>
+<%= form_with model: @order, url: public_orders_path, method: :post do |f| %>
+<ul>
+
+  <li><%= f.radio_button :payment_method, "Order.payment_methods_i18n[:credit_card]" %>
+  <%= f.label :payment_method_credit_card, "クレジットカード" %>
+  </li>
+  <li>
+  <%= f.radio_button :payment_method, "Order.payment_methods_i18n[:transfer]" %>
+  <%= f.label :payment_method_transfer, "銀行振込" %>
+  </li>
+</ul>
+<p>お届け先</p>
+<ul>
+  <li>
+    <%= f.radio_button :Shipping_address, "1" %>
+    <%= f.label :Shipping_address, "ご自身の住所" %><br>
+    <%= f.label :Shipping_address, "〒#{current_customer.postal_code} #{current_customer.address}" %>
+  </li>
+  <li>
+    <%= f.radio_button :Shipping_address, %>
+    <%= f.select :Shipping_address, options_from_collection_for_select(Order, :フォームで送る値(メソッド), :address_display) %>
+</ul>
+<% end %>
